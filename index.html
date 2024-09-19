@@ -1,0 +1,112 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #btn{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #btn p{
+            transform: rotate(-90deg);
+            color: #fff;
+            font-weight: bolder;
+            
+        }
+        #tostify{
+            width: 200px;
+            padding: 20px;
+            background: #000;
+            color: #fff;
+            text-align: center;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transition: .3s all linear;
+            translate: 100%;
+        }
+        #select{
+
+        }
+    </style>
+</head>
+<body>
+    <!-- tostify message -->
+    <div id="tostify">
+        text copied
+    </div>
+
+   <div class="container">
+        <select id="SeletBox" class="form-select" name="" id="">
+            <option value="#HEX">HEX(#AA1923)</option>
+            <option value="HEX">HEX(AA1923)</option>
+        </select>
+   </div>
+
+    <hr>
+
+
+    <div class="container mt-2">
+        
+           <div class="row gap-5 justify-content-center" id="color-container">
+
+           </div>
+        
+    </div>
+
+
+
+
+    
+
+    <script src="js/bootstrap.bundle.js"></script>
+    <script>          
+    let color = ['156064', '00C49A', 'F8E16C', 'FFC2B4', 'FB8F67', '1abc9c', '2ecc71', '3498db', '9b59b6', '34495e',  '34495e', '16a085', '27ae60', '2980b9', '8e44ad', '2c3e50', 'f1c40f', 'e67e22', 'e74c3c', 'ecf0f1', '95a5a6', 'f39c12', 'd35400', 'c0392b', 'bdc3c7', '7f8c8d']
+        const container = document.getElementById("color-container")
+        color.forEach((value, index)=>{
+            container.innerHTML += `
+               <button onclick="getCode('${value}')" id="btn" class="btn" style="background: #${value}; width:70px; height: 250px; transform: "> 
+                    <p id="Code"></p>
+                </button>
+            `
+        })
+
+        function getCode(value){
+            let SeletBox = document.getElementById("SeletBox").value
+           if(SeletBox === "HEX"){
+          
+            let copy = navigator.clipboard.writeText(value);
+            let tostify = document.getElementById("tostify")
+            tostify.style.background = `#${value}`
+            tostify.style.translate = "0"
+            tostify.innerHTML = `Copied: ${value}`
+            setTimeout(()=>{
+                let tostify = document.getElementById("tostify")
+                tostify.style.translate = "100%"
+            }, 1500)
+            
+           }
+           else{
+            let copy = navigator.clipboard.writeText(`#${value}`);
+            let tostify = document.getElementById("tostify")
+            tostify.style.background = `#${value}`
+            tostify.style.translate = "0"
+            tostify.innerHTML = `Copied: #${value}`
+            setTimeout(()=>{
+                let tostify = document.getElementById("tostify")
+                tostify.style.translate = "100%"
+            }, 1500)
+           }
+           
+        }
+    </script>
+</body>
+</html>
