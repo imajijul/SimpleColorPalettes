@@ -22,8 +22,8 @@
             
         }
         #tostify{
-            width: 200px;
-            padding: 20px;
+            width: 150px;
+            padding: 15px;
             background: #000;
             color: #fff;
             text-align: center;
@@ -44,14 +44,14 @@
         text copied
     </div>
 
-   <div class="container">
+   <div class="container mt-3">
         <select id="SeletBox" class="form-select" name="" id="">
             <option value="#HEX">HEX(#AA1923)</option>
             <option value="HEX">HEX(AA1923)</option>
         </select>
    </div>
 
-    <hr>
+   <div class="container"> <hr></div>
 
 
     <div class="container mt-2">
@@ -73,7 +73,7 @@
         const container = document.getElementById("color-container")
         color.forEach((value, index)=>{
             container.innerHTML += `
-               <button onclick="getCode('${value}')" id="btn" class="btn" style="background: #${value}; width:70px; height: 250px; transform: "> 
+               <button onclick="getCode('${value}')" id="btn" class="btn" style="background: #${value}; width:70px; height: 70px; border-radius: 50%;"> 
                     <p id="Code"></p>
                 </button>
             `
